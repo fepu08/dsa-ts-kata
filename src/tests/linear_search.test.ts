@@ -1,4 +1,4 @@
-import { linearSearch } from '../linear_search';
+import { linearSearch } from '../algorithms/linear_search';
 
 describe('LinearSearch', () => {
   test('Empty list', () => {
@@ -34,5 +34,16 @@ describe('LinearSearch', () => {
     const list: number[] = [1, 2, item, 4];
 
     expect(linearSearch(list, 42)).toBeTruthy();
+  });
+
+  test('List with a single element', () => {
+    expect(linearSearch([1], 1)).toBeTruthy();
+    expect(linearSearch([1], 0)).toBeFalsy();
+  });
+
+  test('List with two elements', () => {
+    expect(linearSearch([1, 2], 1)).toBeTruthy();
+    expect(linearSearch([1, 2], 2)).toBeTruthy();
+    expect(linearSearch([1, 2], 0)).toBeFalsy();
   });
 });
