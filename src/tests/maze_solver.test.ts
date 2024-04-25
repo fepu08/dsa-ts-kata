@@ -1,4 +1,5 @@
-import maze_solver from '@code/MazeSolver';
+import { Point } from '../global';
+import maze_solver from '../problems/maze_solver';
 
 test('maze solver', function () {
   const maze = [
@@ -30,6 +31,7 @@ test('maze solver', function () {
 
   // there is only one path through
   const result = maze_solver(maze, 'x', { x: 10, y: 0 }, { x: 1, y: 5 });
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   expect(drawPath(maze, result)).toEqual(drawPath(maze, mazeResult));
 });
 

@@ -22,7 +22,7 @@ describe('BinarySearch', () => {
 
   test('Item is the last element of the list', () => {
     expect(binarySearch([1, 2, 3, 4, 5], 5)).toBeTruthy();
-    expect(binarySearch([1, 2, 3, 4, 5, 6], 5)).toBeTruthy();
+    expect(binarySearch([1, 2, 3, 4, 5, 6], 6)).toBeTruthy();
   });
 
   test('Item is in the list', () => {
