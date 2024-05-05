@@ -1,3 +1,5 @@
+import { ListNode } from './linked_list';
+
 interface StackInterface<T> {
   get length(): number;
   push(item: T): void;
@@ -6,16 +8,50 @@ interface StackInterface<T> {
 }
 
 export default class Stack<T> implements StackInterface<T> {
+  private head?: ListNode<T>;
+  private tail?: ListNode<T>;
+  private _length: number;
+
+  constructor() {
+    this.head = this.tail = undefined;
+    this._length = 0;
+  }
+
   get length(): number {
-    throw new Error('Method not implemented.');
+    return this._length;
   }
   push(item: T): void {
-    throw new Error('Method not implemented.');
+    const node = new ListNode<T>(item);
+    this._length++;
+
+    if (!this.head) {
+      this.head = this.tail = node;
+      return;
+    }
+
+    node.next = this.head;
+    this.head = node;
   }
+
   pop(): T | undefined {
-    throw new Error('Method not implemented.');
+    if (!this.head) {
+      return undefined;
+    }
+
+    this._length--;
+
+    const head = this.head;
+
+    if (this._length === 0) {
+      this.head = this.tail = undefined;
+    }
+
+    this.head = head.next;
+    head.next = undefined;
+    return head.value;
   }
+
   peek(): T | undefined {
-    throw new Error('Method not implemented.');
+    return this.head?.value;
   }
 }
